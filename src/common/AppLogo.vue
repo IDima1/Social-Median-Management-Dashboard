@@ -1,28 +1,29 @@
 <template>
-  <div class="app-logo">
-    <img
-      class="app-logo__img"
-      src="/branding/logo.svg"
-      :alt="$config.APP_NAME"
-    />
-    <router-link class="app-logo__link" :to="{ name: $routes.uiKit }" />
+  <div class="app-name">
+    <h1 class="app-name__header">{{$t('sidebar.logo-name')}}</h1>
+    <router-link class="app-name__link" :to="{ name: $routes.mainPage }" />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n()
+</script>
 <style lang="scss" scoped>
-.app-logo {
+.app-name {
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: relative;
 }
 
-.app-logo__link {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+.app-name__header {
+  font-size: toRem(28);
+  font-weight: 700;
+}
+
+.app-name__link {
+  display: flex;
 }
 </style>

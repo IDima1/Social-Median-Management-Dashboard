@@ -6,78 +6,57 @@
   --vh: 1vh;
 
   --white: #{$white};
-  --white-rgb: #{$white-rgb};
   --black: #{$black};
-  --black-rgb: #{$black-rgb};
 
   --background-primary-light: #{$background-primary-light};
   --background-primary-main: #{$background-primary-main};
   --background-primary-dark: #{$background-primary-dark};
 
-  --background-secondary-light: #{$background-secondary-light};
   --background-secondary-main: #{$background-secondary-main};
   --background-secondary-dark: #{$background-secondary-dark};
 
+  --background-tertiary-main: #{$background-tertiary-main};
+
+  --background-quartiary-dark: #{$background-quartiary-dark};
+  --background-quartiary-main: #{$background-quartiary-main};
+
   /* status colors */
-  --success-light: #{$success-light};
+
   --success-main: #{$success-main};
-  --success-dark: #{$success-dark};
-
-  --error-light: #{$error-light};
+  --success-light: #{$success-light};
   --error-main: #{$error-main};
-  --error-dark: #{$error-dark};
-
-  --warning-light: #{$warning-light};
-  --warning-main: #{$warning-main};
-  --warning-dark: #{$warning-dark};
-
-  --info-light: #{$info-light};
   --info-main: #{$info-main};
-  --info-dark: #{$info-dark};
 
   /* brand colors */
+
   --primary-light: #{$primary-light};
   --primary-main: #{$primary-main};
   --primary-dark: #{$primary-dark};
-  --primary-light-rgb: #{$primary-light-rgb};
-  --primary-main-rgb: #{$primary-main-rgb};
-  --primary-dark-rgb: #{$primary-dark-rgb};
-
-  --secondary-light: #{$secondary-light};
-  --secondary-main: #{$secondary-main};
-  --secondary-dark: #{$secondary-dark};
 
   /* typography colors */
+
   --text-primary-light: #{$text-primary-light};
   --text-primary-main: #{$text-primary-main};
   --text-primary-dark: #{$text-primary-dark};
 
   --text-secondary-light: #{$text-secondary-light};
   --text-secondary-main: #{$text-secondary-main};
-  --text-secondary-dark: #{$text-secondary-dark};
-
-  --text-primary-invert-light: #{$text-primary-invert-light};
-  --text-primary-invert-main: #{$text-primary-invert-main};
-  --text-primary-invert-dark: #{$text-primary-invert-dark};
-
-  --text-secondary-invert-light: #{$text-secondary-invert-light};
-  --text-secondary-invert-main: #{$text-secondary-invert-main};
-  --text-secondary-invert-dark: #{$text-secondary-invert-dark};
 
   /* border colors */
-  --border-primary-light: #{$border-primary-light};
-  --border-primary-main: #{$border-primary-main};
-  --border-primary-dark: #{$border-primary-dark};
 
-  --border-secondary-light: #{$border-secondary-light};
-  --border-secondary-main: #{$border-secondary-main};
-  --border-secondary-dark: #{$border-secondary-dark};
+  --border-primary-main: #{$border-primary-main};
+
+  /* chart colors */
+
+  --chart-primary-main: #{$chart-primary-main};
 
   /* App variables */
   --app-txt: #{$text-primary-main};
-  --app-font-family: 'Roboto', 'Arial', sans-serif;
-  --app-padding-right: #{toRem(64)};
-  --app-padding-left: #{toRem(64)};
+  --app-font-family: 'DM Sans', sans-serif;
+  --app-padding-right: #{toRem(48)};
+  --app-padding-left: #{toRem(30)};
+  --app-padding-top: #{toRem(30)};
+  --app-padding-bottom: #{toRem(34)};
 
   @include respond-to(xmedium) {
     --app-padding-right: #{toRem(32)};
@@ -114,6 +93,7 @@
   --field-border: var(--border-primary-light);
   --field-border-hover: var(--border-primary-light);
   --field-border-focus: var(--primary-main);
+  --field-border-radius: #{toRem(20)};
 
   /* transition duration */
   --field-transition-duration: 0.2s;

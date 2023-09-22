@@ -6,7 +6,7 @@
       v-bind="$attrs"
       :to="route"
     >
-      <icon v-if="iconLeft" class="app-button__icon-left" :name="iconLeft" />
+      <app-icon v-if="iconLeft" class="app-button__icon-left" :name="iconLeft" />
       <template v-if="$slots.default">
         <slot />
       </template>
@@ -15,12 +15,12 @@
           {{ text }}
         </span>
       </template>
-      <icon v-if="iconRight" class="app-button__icon-right" :name="iconRight" />
+      <app-icon v-if="iconRight" class="app-button__icon-right" :name="iconRight" />
     </router-link>
   </template>
   <template v-else-if="href">
     <a class="app-button" :class="buttonClasses" v-bind="$attrs" :href="href">
-      <icon v-if="iconLeft" class="app-button__icon-left" :name="iconLeft" />
+      <app-icon v-if="iconLeft" class="app-button__icon-left" :name="iconLeft" />
       <template v-if="$slots.default">
         <slot />
       </template>
@@ -29,7 +29,7 @@
           {{ text }}
         </span>
       </template>
-      <icon v-if="iconRight" class="app-button__icon-right" :name="iconRight" />
+      <app-icon v-if="iconRight" class="app-button__icon-right" :name="iconRight" />
     </a>
   </template>
   <template v-else>
@@ -40,7 +40,7 @@
       :disabled="isDisabled"
       :type="buttonType"
     >
-      <icon v-if="iconLeft" class="app-button__icon-left" :name="iconLeft" />
+      <app-icon v-if="iconLeft" class="app-button__icon-left" :name="iconLeft" />
       <template v-if="$slots.default">
         <slot />
       </template>
@@ -58,7 +58,7 @@
 import { computed, useAttrs, useSlots } from 'vue'
 import type { LocationAsRelativeRaw } from 'vue-router'
 
-import { Icon } from '@/common'
+import { AppIcon } from '@/common'
 import type { ICON_NAMES } from '@/enums'
 
 type ButtonType = 'button' | 'submit' | 'reset'
@@ -68,8 +68,8 @@ const props = withDefaults(
     text?: string
     scheme?: 'filled' | 'flat' | 'none'
     modification?: 'border-circle' | 'border-rounded' | 'none'
-    color?: 'primary' | 'success' | 'error' | 'warning' | 'info' | 'none'
-    size?: 'large' | 'medium' | 'small' | 'x-small' | 'none'
+    color?: 'primary' | 'none'
+    size?: 'tiny' | 'small' | 'medium' | 'none'
     route?: LocationAsRelativeRaw
     href?: string
     iconLeft?: ICON_NAMES
@@ -80,7 +80,7 @@ const props = withDefaults(
     scheme: 'filled',
     modification: 'border-rounded',
     color: 'primary',
-    size: 'medium',
+    size: 'small',
     route: undefined,
     href: '',
     iconLeft: undefined,
@@ -169,15 +169,15 @@ const buttonType = computed<ButtonType>(
   }
 
   &--scheme-filled {
-    --app-button-filled-bg: var(--primary-main);
-    --app-button-filled-bg-hover: var(--primary-main);
-    --app-button-filled-bg-focused: var(--primary-main);
-    --app-button-filled-bg-active: var(--primary-dark);
+    --app-button-filled-bg: var(--background-primary-main);
+    --app-button-filled-bg-hover: var(--background-primary-main);
+    --app-button-filled-bg-focused: var(--background-primary-main);
+    --app-button-filled-bg-active: var(--background-primary-main);
 
-    --app-button-filled-text: var(--text-primary-invert-main);
-    --app-button-filled-text-hover: var(--text-primary-invert-main);
-    --app-button-filled-text-focused: var(--text-primary-invert-main);
-    --app-button-filled-text-active: var(--text-primary-invert-main);
+    --app-button-filled-text: var(--text-secondary-main);
+    --app-button-filled-text-hover: var(--text-secondary-main);
+    --app-button-filled-text-focused: var(--text-secondary-main);
+    --app-button-filled-text-active: var(--text-secondary-main);
 
     --app-button-filled-border: 0;
     --app-button-filled-border-hover: 0;
@@ -206,17 +206,17 @@ const buttonType = computed<ButtonType>(
     --app-button-flat-bg-focused: none;
     --app-button-flat-bg-active: var(--background-secondary-main);
 
-    --app-button-flat-text: var(--primary-main);
-    --app-button-flat-text-hover: var(--primary-main);
-    --app-button-flat-text-focused: var(--primary-main);
-    --app-button-flat-text-active: var(--primary-main);
+    --app-button-flat-text: var(--text-primary-light);
+    --app-button-flat-text-hover: var(--text-primary-light);
+    --app-button-flat-text-focused: var(--text-primary-light);
+    --app-button-flat-text-active: var(--text-primary-light);
 
-    --app-button-flat-border: #{toRem(1)} solid var(--secondary-light);
+    --app-button-flat-border: #{toRem(1)} solid var(--border-primary-main);
     --app-button-flat-border-hover: var(--app-button-flat-border);
     --app-button-flat-border-focused: var(--app-button-flat-border);
     --app-button-flat-border-active: var(--app-button-flat-border);
 
-    --app-button-bg: var(--app-button-flat-bg);
+    --app-button-bg: var(--background-secondary-main);
     --app-button-bg-hover: var(--app-button-flat-bg-hover);
     --app-button-bg-focused: var(--app-button-flat-bg-focused);
     --app-button-bg-active: var(--app-button-flat-bg-active);
@@ -254,153 +254,35 @@ const buttonType = computed<ButtonType>(
     --app-button-text-active: var(--app-button-none-text-active);
   }
 
-  &--success {
-    --app-button-filled-bg: var(--success-main);
-    --app-button-filled-bg-hover: var(--success-main);
-    --app-button-filled-bg-focused: var(--success-main);
-    --app-button-filled-bg-active: var(--success-dark);
-
-    --app-button-filled-text: var(--text-primary-light);
-    --app-button-filled-text-hover: var(--text-primary-light);
-    --app-button-filled-text-focused: var(--text-primary-light);
-    --app-button-filled-text-active: var(--text-primary-light);
-
-    --app-button-flat-text: var(--success-main);
-    --app-button-flat-text-hover: var(--success-main);
-    --app-button-flat-text-focused: var(--success-main);
-    --app-button-flat-text-active: var(--success-dark);
-
-    --app-button-flat-border: #{toRem(1)} solid var(--success-main);
-    --app-button-flat-border-hover: var(--app-button-flat-border);
-    --app-button-flat-border-focused: var(--app-button-flat-border);
-    --app-button-flat-border-active: #{toRem(1)} solid var(--success-dark);
-
-    --app-button-none-text: var(--success-main);
-    --app-button-none-text-hover: var(--success-main);
-    --app-button-none-text-focused: var(--success-main);
-    --app-button-none-text-active: var(--success-dark);
-  }
-
-  &--error {
-    --app-button-filled-bg: var(--error-main);
-    --app-button-filled-bg-hover: var(--error-main);
-    --app-button-filled-bg-focused: var(--error-main);
-    --app-button-filled-bg-active: var(--error-dark);
-
-    --app-button-filled-text: var(--text-primary-light);
-    --app-button-filled-text-hover: var(--text-primary-light);
-    --app-button-filled-text-focused: var(--text-primary-light);
-    --app-button-filled-text-active: var(--text-primary-light);
-
-    --app-button-flat-text: var(--error-main);
-    --app-button-flat-text-hover: var(--error-main);
-    --app-button-flat-text-focused: var(--error-main);
-    --app-button-flat-text-active: var(--error-dark);
-
-    --app-button-flat-border: #{toRem(1)} solid var(--error-main);
-    --app-button-flat-border-hover: var(--app-button-flat-border);
-    --app-button-flat-border-focused: var(--app-button-flat-border);
-    --app-button-flat-border-active: #{toRem(1)} solid var(--error-dark);
-
-    --app-button-none-text: var(--error-main);
-    --app-button-none-text-hover: var(--error-main);
-    --app-button-none-text-focused: var(--error-main);
-    --app-button-none-text-active: var(--error-dark);
-  }
-
-  &--warning {
-    --app-button-filled-bg: var(--warning-main);
-    --app-button-filled-bg-hover: var(--warning-main);
-    --app-button-filled-bg-focused: var(--warning-main);
-    --app-button-filled-bg-active: var(--warning-dark);
-
-    --app-button-filled-text: var(--text-primary-light);
-    --app-button-filled-text-hover: var(--text-primary-light);
-    --app-button-filled-text-focused: var(--text-primary-light);
-    --app-button-filled-text-active: var(--text-primary-light);
-
-    --app-button-flat-text: var(--warning-main);
-    --app-button-flat-text-hover: var(--warning-main);
-    --app-button-flat-text-focused: var(--warning-main);
-    --app-button-flat-text-active: var(--warning-dark);
-
-    --app-button-flat-border: #{toRem(1)} solid var(--warning-main);
-    --app-button-flat-border-hover: var(--app-button-flat-border);
-    --app-button-flat-border-focused: var(--app-button-flat-border);
-    --app-button-flat-border-active: #{toRem(1)} solid var(--warning-dark);
-
-    --app-button-none-text: var(--warning-main);
-    --app-button-none-text-hover: var(--warning-main);
-    --app-button-none-text-focused: var(--warning-main);
-    --app-button-none-text-active: var(--warning-dark);
-  }
-
-  &--info {
-    --app-button-filled-bg: var(--info-main);
-    --app-button-filled-bg-hover: var(--info-main);
-    --app-button-filled-bg-focused: var(--info-main);
-    --app-button-filled-bg-active: var(--info-dark);
-
-    --app-button-filled-text: var(--text-primary-light);
-    --app-button-filled-text-hover: var(--text-primary-light);
-    --app-button-filled-text-focused: var(--text-primary-light);
-    --app-button-filled-text-active: var(--text-primary-light);
-
-    --app-button-flat-text: var(--info-main);
-    --app-button-flat-text-hover: var(--info-main);
-    --app-button-flat-text-focused: var(--info-main);
-    --app-button-flat-text-active: var(--info-dark);
-
-    --app-button-flat-border: #{toRem(1)} solid var(--info-main);
-    --app-button-flat-border-hover: var(--app-button-flat-border);
-    --app-button-flat-border-focused: var(--app-button-flat-border);
-    --app-button-flat-border-active: #{toRem(1)} solid var(--info-dark);
-
-    --app-button-none-text: var(--info-main);
-    --app-button-none-text-hover: var(--info-main);
-    --app-button-none-text-focused: var(--info-main);
-    --app-button-none-text-active: var(--info-dark);
-  }
-
   &--border-circle {
     border-radius: toRem(100);
   }
 
   &--border-rounded {
-    border-radius: toRem(14);
+    border-radius: toRem(18);
   }
 
-  &--large {
-    --button-icon-size: #{toRem(18)};
+  &--tiny {
+    --button-icon-size: #{toRem(24)};
 
-    padding: toRem(18) toRem(36);
-    gap: toRem(8);
+    font-size: toRem(10);
+    font-weight: 600;
+    line-height: normal;
+    padding: toRem(11) toRem(22) toRem(13) toRem(23);
+    height: toRem(36);
+  }
+
+  &--small {
+    --button-icon-size: #{toRem(24)};
+
     font-size: toRem(14);
-    line-height: 1.45;
-    font-weight: 500;
+    line-height: toRem(24);
+    font-weight: 700;
+    gap: toRem(16);
     height: toRem(56);
 
     &.app-button--icon-only {
-      --button-icon-size: #{toRem(20)};
-
-      padding: toRem(18);
-      width: calc(var(--button-icon-size) + #{toRem(18)});
-      height: calc(var(--button-icon-size) + #{toRem(18)});
-    }
-  }
-
-  &--medium {
-    --button-icon-size: #{toRem(16)};
-
-    padding: toRem(12) toRem(24);
-    font-size: toRem(12);
-    line-height: 1.3;
-    font-weight: 500;
-    gap: toRem(8);
-    height: toRem(40);
-
-    &.app-button--icon-only {
-      --button-icon-size: #{toRem(20)};
+      --button-icon-size: #{toRem(24)};
 
       padding: toRem(12);
       width: calc(var(--button-icon-size) + #{toRem(12)});
@@ -408,22 +290,22 @@ const buttonType = computed<ButtonType>(
     }
   }
 
-  &--small {
-    --button-icon-size: #{toRem(14)};
+  &--medium {
+    --button-icon-size: #{toRem(24)};
 
-    padding: toRem(8) toRem(16);
+    padding: toRem(10) toRem(53);
     font-size: toRem(12);
-    line-height: 1.45;
-    font-weight: 500;
+    line-height: toRem(20);
+    font-weight: 700;
     gap: toRem(8);
-    height: toRem(32);
+    height: toRem(40);
 
     &.app-button--icon-only {
-      --button-icon-size: #{toRem(20)};
+      --button-icon-size: #{toRem(42)};
 
-      padding: toRem(8);
-      width: calc(var(--button-icon-size) + #{toRem(8)});
-      height: calc(var(--button-icon-size) + #{toRem(8)});
+      padding: toRem(12);
+      width: calc(var(--button-icon-size) + #{toRem(12)});
+      height: calc(var(--button-icon-size) + #{toRem(12)});
     }
   }
 }

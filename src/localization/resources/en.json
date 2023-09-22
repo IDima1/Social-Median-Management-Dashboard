@@ -1,38 +1,44 @@
 {
-  "validations": {
-    "field-error_required": "Please fill out this field",
-    "field-error_email": "Field must be a valid email"
+  "sidebar": {
+    "socializer-title": "socializer",
+    "overview-btn": "Overview",
+    "leaderboard-btn": "Leaderboard",
+    "spreadsheets-btn": "Spreadsheets",
+    "administration-btn": "Administration",
+    "sales-btn": "Sales",
+    "schedule-btn": "Schedule",
+    "teams-title": "Teams",
+    "message-btn": "Message",
+    "support-btn": "Support",
+    "upgrade-btn": "Upgrade",
+    "upgrade-txt": "Upgrade to Pro for more resources"
+  },
+  "header": {
+    "greetings-title": "Hello Dave, Welcome back",
+    "dashboard-title": "Your Dashboard is updated"
+  },
+  "advices": {
+    "latest-updates-txt": "Latest Updates",
+    "category-updates-txt": "F&B Industry",
+    "graph-visitors": "Visitors this year",
+    "graph-quantity-percent": "Since last year",
+    "quantity-videos": "Videos Played",
+    "quantity-posts": "Scheduled Posts",
+    "weather-title": "What`s your plan?",
+    "weather-descr": "Looks like a shady day"
+  },
+  "statistics": {
+    "latest-updates-title": "Latest updates",
+    "brand-addiction-btn": "Brand addiction",
+    "quantity-test-label": "Upcoming tasks",
+    "chart-viral-posts": "Posts went Viral",
+    "widget-title": "Great Job, You Saved",
+    "widget-posts-reach": "Post Reach This Year",
+    "widget-year": "2020"
   },
   "errors": {
-    "default": "Something went wrong"
-  },
-  "notification": {
-    "default-title-success": "Success",
-    "default-title-error": "Error",
-    "default-title-warning": "Warning",
-    "default-title-info": "Info",
-    "default-title-default": "Just a message",
-    "default-message-success": "Action successful",
-    "default-message-error": "Something went wrong",
-    "default-message-warning": "Something you are doing is not recommended",
-    "default-message-info": "Something is happening. Just want you to know that",
-    "default-message-default": "Just a message"
-  },
-  "login-form": {
-    "login-lbl": "Login",
-    "password-lbl": "Password",
-    "login-success-msg": "Access granted",
-    "submit-btn": "Submit"
-  },
-  "ui-kit-page": {
-    "button": "Button",
-    "some-placeholder": "placeholder",
-    "some-label": "label",
-    "some-error-message": "error-message",
-    "modal-btn": "Open modal",
-    "accordion-btn": "Toggle Accordion",
-    "collapse-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "loading-error-msg": "Oops, something went wrong",
-    "no-data-msg": "Empty data, please add new"
+    "loading-error-msg": "Loading...",
+    "loading-failed-msg": "Ooops... Something went wrong",
+    "loading-not-found-msg": "No latest update found"
   }
 }
